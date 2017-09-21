@@ -91,6 +91,8 @@ export default class Add extends Component {
 
       if(isNaN(Number(this.state.modelYearOfVehicle))) {
         window.alert("The model year of vehicle is not a number!");
+      } else if(this.state.plateOfVehicle.length < 7) {
+        window.alert("You entered wrong plate type!");
       } else {
         Meteor.call(
           'addVehicle',
@@ -114,6 +116,8 @@ export default class Add extends Component {
           colorOfVehicle: "#000000",
           active: false
         });
+
+        window.alert("The vehicle is added successfully!");
       }
     }
   }

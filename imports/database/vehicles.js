@@ -40,10 +40,10 @@ Meteor.methods({
 
 if (Meteor.isServer) {
   Meteor.publish('vehicles', function() {
-    return Vehicles.find({}, {sort: { createdAt: -1 }});
+    return Vehicles.find({ownerId: this.userId}, {sort: { createdAt: -1 }});
   });
 
   Meteor.publish('vehicle', function(id) {
-    return Vehicles.find({ _id: id});
+    return Vehicles.find({ $and: [{ _id: id}, {ownerId: this.userId}]}); 
   });
 }
