@@ -1,6 +1,6 @@
 import React, { Component, constructor } from 'react';
 
-import Nav from './Nav.jsx';
+import Nav from './Nav.jsx'; // Navigation conponent of this project
 
 export default class Add extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ export default class Add extends Component {
       active: false
     };
 
+    //functions that updates states when user writes input into fields.
     this.updatePlateOfVehicle = this.updatePlateOfVehicle.bind(this);
     this.updateNickNameOfVehicle = this.updateNickNameOfVehicle.bind(this);
     this.updateBrandOfVehicle = this.updateBrandOfVehicle.bind(this);
@@ -79,6 +80,7 @@ export default class Add extends Component {
   }
 
   submit() {
+    //Fields cannot be empty.
     if( this.state.plateOfVehicle === ""
       || this.state.nickNameOfVehicle === ""
       || this.state.brandOfVehicle === ""
@@ -86,14 +88,19 @@ export default class Add extends Component {
       || this.state.modelYearOfVehicle === ""
       || this.state.typeOfVehicle === "" ) {
 
-      window.alert("Some fields are empty!");
+      window.alert("Some fields are empty!"); // Informs the user.
     } else {
 
-      if(isNaN(Number(this.state.modelYearOfVehicle))) {
-        window.alert("The model year of vehicle is not a number!");
-      } else if(this.state.plateOfVehicle.length < 7) {
-        window.alert("You entered wrong plate type!");
+      if(isNaN(Number(this.state.modelYearOfVehicle))) { //This checks whether modelYearOfVehicle field is number or not
+        window.alert("The model year of vehicle is not a number!"); // Informs the user.
+      } else if(this.state.plateOfVehicle.length < 7) { //This checks whether plateOfVehicle field's length is 7 lower
+        window.alert("You entered wrong plate type!"); // Informs the user.
       } else {
+        /*
+          First it calls function named addVehicle from client side then calls it from server side.They run simultaneously.
+          Important point is whether or not function from server side fails.If it fails it won't store it even if client side function
+          run successfully.
+         */
         Meteor.call(
           'addVehicle',
           this.state.plateOfVehicle,
@@ -106,6 +113,7 @@ export default class Add extends Component {
           this.state.active
         );
 
+        //States are returns their default values so that if user wants to insert multiple vehicles it is easier for him.
         this.setState({
           plateOfVehicle: "",
           nickNameOfVehicle: "",
@@ -117,11 +125,12 @@ export default class Add extends Component {
           active: false
         });
 
-        window.alert("The vehicle is added successfully!");
+        window.alert("The vehicle is added successfully!"); // Informs the user.
       }
     }
   }
 
+  //Only Bootsrap is used.
   render() {
     return(
       <div>

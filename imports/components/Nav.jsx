@@ -7,17 +7,18 @@ export default class Nav extends Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
+  //When user clicks 'Logout' button, this function logout the user.
   handleLogout(event){
     Meteor.logout(function(err){
       if(err) {
-        //Show Error!
-        console.log(err);
+        window.alert("You couldn't Logout.Error was : " + err); // Informs the user.
       } else {
-        FlowRouter.go('/login');
+        FlowRouter.go('/login'); // This redirects the user back to the login screen.
       }
     });
   }
 
+  //Only Bootsrap is used.
   render() {
     return(
       <div>

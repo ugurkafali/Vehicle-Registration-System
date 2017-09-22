@@ -27,21 +27,22 @@ export default class Login extends Component {
   }
 
   login() {
+    //Checks whether fields are empty or not.
     if (this.state.username.toString().length !== 0 & this.state.password.toString().length !== 0) {
+      //This function controls whether given username and password are in Accounts collection and if it is it logs in the user if not gives error
       Meteor.loginWithPassword(this.state.username, this.state.password, (error) => {
         if (error) {
-          //show error!
-          window.alert("Wrong username or password!");
+          window.alert("Wrong username or password!"); // Informs the user.
         } else {
-          FlowRouter.go('/');
+          FlowRouter.go('/'); //if user logs in successfully, FlowRouter redirects him to the homepage
         }
       });
     } else {
-      //show Error!(Empty usarname or password)
-      window.alert("Username or password is empty!");
+      window.alert("Username or password is empty!"); // Informs the user.
     }
   }
 
+  //Only Bootsrap is used.
   render() {
     return (
       <div className="loginContainer">

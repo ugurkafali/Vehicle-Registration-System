@@ -9,16 +9,17 @@ export default class Vehicle extends Component {
   }
 
   deleteVehicle() {
-    var confirmation = confirm("Are you sure you want to delete this?");
+    var confirmation = confirm("Are you sure you want to delete this?"); //If user clicks the delete button mistakenly, user can still cancel that.
     if(confirmation == true) {
-      Meteor.call('deleteVehicle', this.props.vehicle._id);
+      Meteor.call('deleteVehicle', this.props.vehicle._id); //Calls function called 'deleteVehicle' to delete vehicle.
     }
   }
 
   editVehicle() {
-    FlowRouter.go('/vehicleEdit/' + this.props.vehicle._id);
+    FlowRouter.go('/vehicleEdit/' + this.props.vehicle._id); //If user wants to edit the vehicle, this function will take him to the vehicleEdit screen.
   }
 
+  //Only Bootsrap is used.
   render() {
     return(
       <div style={{padding: '30px'}, {backgroundColor: ''}} >

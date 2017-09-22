@@ -1,6 +1,6 @@
 import React, { Component, constructor } from 'react';
 
-import Nav from './Nav.jsx';
+import Nav from './Nav.jsx'; // Navigation conponent of this project
 
 export default class Edit extends Component {
   constructor(props) {
@@ -8,6 +8,8 @@ export default class Edit extends Component {
 
     document.title = "Edit Vehicle";
 
+    /* if vehicle's data comes before constructor run, it will set states those vehicles' information.If not it will set default value
+     so that it won't gave error then componentWillReceiveProps function will set states later for easier use.  */
     if(this.props.vehicle) {
       this.state = {
         id: this.props.vehicle._id,
@@ -34,6 +36,7 @@ export default class Edit extends Component {
       };
     }
 
+    //functions that updates states when user writes input into fields.
     this.updatePlateOfVehicle = this.updatePlateOfVehicle.bind(this);
     this.updateNickNameOfVehicle = this.updateNickNameOfVehicle.bind(this);
     this.updateBrandOfVehicle = this.updateBrandOfVehicle.bind(this);
@@ -45,6 +48,7 @@ export default class Edit extends Component {
     this.edit = this.edit.bind(this);
   }
 
+  //If vehicle's data comes after constructor run, this code will set states accordingly. This function comes from react.
   componentWillReceiveProps(nextProps) {
     this.setState({
       id: nextProps.vehicle._id,
@@ -108,6 +112,7 @@ export default class Edit extends Component {
   }
 
   edit() {
+    //Fields cannot be empty.
     if( this.state.plateOfVehicle === ""
       || this.state.nickNameOfVehicle === ""
       || this.state.brandOfVehicle === ""
@@ -115,14 +120,19 @@ export default class Edit extends Component {
       || this.state.modelYearOfVehicle === ""
       || this.state.typeOfVehicle === "" ) {
 
-      window.alert("Some fields are empty!");
+      window.alert("Some fields are empty!"); // Informs the user.
     } else {
 
-      if(isNaN(Number(this.state.modelYearOfVehicle))) {
-        window.alert("The model year of vehicle is not a number!");
-      } else if(this.state.plateOfVehicle.length < 7) {
-        window.alert("You entered wrong plate type!");
+      if(isNaN(Number(this.state.modelYearOfVehicle))) { //This checks whether modelYearOfVehicle field is number or not
+        window.alert("The model year of vehicle is not a number!"); // Informs the user.
+      } else if(this.state.plateOfVehicle.length < 7) { //This checks whether plateOfVehicle field's length is 7 lower
+        window.alert("You entered wrong plate type!"); // Informs the user.
       } else {
+        /*
+          First it calls function named updateVehicle from client side then calls it from server side.They run simultaneously.
+          Important point is whether or not function from server side fails.If it fails it won't update it even if client side function
+          run successfully.
+         */
         Meteor.call(
           'updateVehicle',
           this.state.id,
@@ -136,12 +146,13 @@ export default class Edit extends Component {
           this.state.active
         );
 
-        window.alert("Vehicle's informations are updated!");
-        FlowRouter.redirect('/');
+        window.alert("Vehicle's informations are updated!");  // Informs the user.
+        FlowRouter.redirect('/'); // redirects user to homepage.FlowRouter explained wider in lib/router.jsx file.
       }
     }
   }
 
+  //Only Bootsrap is used.
   render() {
     return(
       <div>

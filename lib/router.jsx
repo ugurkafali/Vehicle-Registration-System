@@ -7,6 +7,12 @@ import Login from '../imports/components/Login.jsx';
 import Add from '../imports/components/Add.jsx';
 import EditContainer from '../imports/components/EditContainer.jsx';
 
+/*
+	If user has logged in, they have an unique id and we can access it via Meteor.userId().If they have and it matches with Accounts database,
+	users can access everywhere but if not they are redirected automatically to the Login route.We must check it in every restricted route.
+	Also if they are logged in if they try to access Login route they are redirected automatically to the Homepage.
+*/
+
 FlowRouter.route('/', {
 	name: 'home',
 
@@ -49,6 +55,7 @@ FlowRouter.route('/add', {
 	}
 });
 
+//This route adds one parameter and it is vehicle's unique id.This parameter can only be accessed from EditContainer component.
 FlowRouter.route('/vehicleEdit/:id', {
 	name: 'edit',
 
