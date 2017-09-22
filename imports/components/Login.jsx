@@ -29,7 +29,7 @@ export default class Login extends Component {
   login() {
     //Checks whether fields are empty or not.
     if (this.state.username.toString().length !== 0 & this.state.password.toString().length !== 0) {
-      //This function controls whether given username and password are in Accounts collection and if it is it logs in the user if not gives error
+      //This function controls whether given username and password are in users collection and if it is it logs in the user if not gives error
       Meteor.loginWithPassword(this.state.username, this.state.password, (error) => {
         if (error) {
           window.alert("Wrong username or password!"); // Informs the user.

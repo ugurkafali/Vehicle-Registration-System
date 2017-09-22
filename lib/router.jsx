@@ -8,7 +8,7 @@ import Add from '../imports/components/Add.jsx';
 import EditContainer from '../imports/components/EditContainer.jsx';
 
 /*
-	If user has logged in, they have an unique id and we can access it via Meteor.userId().If they have and it matches with Accounts database,
+	If user has logged in, they have an unique id and we can access it via Meteor.userId().If they have and it matches with users database,
 	users can access everywhere but if not they are redirected automatically to the Login route.We must check it in every restricted route.
 	Also if they are logged in if they try to access Login route they are redirected automatically to the Homepage.
 */
