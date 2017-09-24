@@ -1,7 +1,7 @@
 # Vehicle-Registration-System
 
 React is used for all front-end side of the project and Meteorjs is used for all back-end side of the project.
-Web link: `https://vehicle-project.herokuapp.com/`.
+Web link: https://vehicle-project.herokuapp.com/.
 
 
 ## All packages that are used:
