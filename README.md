@@ -25,4 +25,9 @@ React is used for all front-end side of the project and Meteorjs is used for all
   2. You must clone the project or download it directly. For cloning the project, use `git clone https://github.com/ugurkafali/Vehicle-Registration-System`.
   3. Run the following code in root directory of this project.
      - meteor npm install
-     - meteor run
+     - meteor run(Before starting the project delete .babelrc file. If you are goint to test this project then just put that file back in project's root file.)
+     
+## Unit testing:
+  For unit testing I used jest and enzyme. For more information, [Jest](https://facebook.github.io/jest/) and [Enzyme](http://airbnb.io/enzyme/index.html).
+  ### How to test:
+    After installation of the project, just run npm test. All test files are in tests file.
