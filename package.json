@@ -2,12 +2,24 @@
   "name": "Vehicle-Registration-System",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "test": "jest"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "react": "^15.6.1",
     "react-dom": "^15.4.2",
     "react-mounter": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "jest": "^21.1.0",
+    "react-test-renderer": "^15.6.1"
   }
 }
